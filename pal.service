@@ -1,0 +1,14 @@
+[Unit]
+Description=open a pal server
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/screen -s /bin/bash -dm -S pal /bin/bash /home/wwjjack/pal/start.sh
+ExecStop=/usr/bin/screen -S pal -X stuff ^c
+KillMode=none
+WorkingDirectory=/home/wwjjack/pal
+Restart=on-failure
+User=wwjjack
+
+[Install]
+WantedBy=multi-user.target
